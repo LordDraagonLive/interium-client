@@ -1,0 +1,57 @@
+<h1>{{accountDetail.display_name}}</h1>
+<img mat-card-image class="imgs" src="{{accountDetail.logo_uri}}" alt="{{accountDetail.provider_id}}">
+
+<ul>
+  <li>
+    Account Name : {{accountDetail.display_name}}
+  </li>
+  <li>
+    Account ID : {{accountDetail.account_id}}
+  </li>
+  <li>
+    Account Number : {{accountDetail.account_number.number}}
+  </li>
+  <li>
+    Account Type : {{accountDetail.account_type}}
+  </li>
+  <li>
+    Account Currency : {{accountDetail.currency}}
+  </li>
+  <li>
+    Bank : {{accountDetail.provider.display_name}}
+  </li>
+  <li>
+    Last Updated at : {{accountDetail.update_timestamp}}     <button mat-raised-button color="primary">Refresh Account Details</button>
+  </li>
+</ul>
+
+<h2>Account Balance</h2>
+
+<button mat-raised-button color="primary" (click)="getAccountBalance()">Show Account Balance</button>
+
+<ul class="accBalance">
+  <li *ngFor="let balance of accountBalance">
+    <span class="badge" style="padding-right:4px">Available : {{balance.available}} {{balance.currency}}</span>
+    <span class="badge" style="padding-right:4px">Current : {{balance.current}} {{balance.currency}}</span>
+    <span class="badge" style="padding-right:4px">Overdraft : {{balance.overdraft}} {{balance.currency}}</span>
+    <span class="badge" style="padding-right:4px">Last Updated at : {{balance.update_timestamp}}</span>
+  </li>
+</ul>
+
+
+<h2>Account Transactions</h2>
+
+<button mat-raised-button color="primary" (click)="getAccountTransactions()">Show Account Transactions</button>
+
+
+<ul class="accTransaction">
+  <li *ngFor="let transaction of accountTransactions">
+    <span class="badge" style="padding-right:4px">Date And Time : {{transaction.timestamp}}</span>
+    <span class="badge" style="padding-right:4px">Transaction : {{transaction.amount}} {{transaction.currency}}</span>
+    <span class="badge" style="padding-right:4px">Trasaction Details : {{transaction.description}}</span>
+    <span class="badge" style="padding-right:4px">Trasaction Type : {{transaction.transaction_type}}</span>
+    <span class="badge" style="padding-right:4px">Trasaction Category : {{transaction.transaction_category}}</span>
+    <span class="badge" style="padding-right:4px">Amount After Transaction : {{transaction.running_balance.amount}} {{transaction.running_balance.currency}}</span>
+    <hr>
+  </li>
+</ul>

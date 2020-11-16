@@ -1,0 +1,8 @@
+{
+  "/signin-callback/*": {
+    "target": "https://auth.truelayer-sandbox.com/connect/token",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
